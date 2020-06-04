@@ -21,3 +21,4 @@ data class DoctorSpecialization(val id:String, val doctorId: String, val special
 data class Qualification(val id:String,val doctorId:String,val qualificationName:String,val institutionName:String,val procurementYear:Date)
 data class HospitalAffiliation(val id:String,val doctorId:String,val hospitalName:String,val city:String,val country:String,val startDate:String,val endDate:String)
 
+@Document data class HospitalDetails(@Id val id:String, val hospitalName:String,val city:String,val country:String)
