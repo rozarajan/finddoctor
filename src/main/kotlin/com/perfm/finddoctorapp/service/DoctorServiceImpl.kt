@@ -5,9 +5,10 @@ import com.perfm.finddoctorapp.repository.DoctorRepository
 import com.perfm.finddoctorapp.util.BasicCrud
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.stereotype.Service
 import java.util.*
 
-
+@Service
 class DoctorServiceImpl(val doctorRepository: DoctorRepository):BasicCrud<String, Doctor> {
     override fun getAll(pageable: Pageable): Page<Doctor> {
         return doctorRepository.findAll(pageable)
@@ -28,6 +29,12 @@ class DoctorServiceImpl(val doctorRepository: DoctorRepository):BasicCrud<String
     override fun deleteById(id: String): Optional<Doctor> {
         TODO("Not yet implemented")
     }
+
+    fun deleteAllDoctorCollections(){
+        doctorRepository.deleteAll()
+    }
+
+
 
 
 }

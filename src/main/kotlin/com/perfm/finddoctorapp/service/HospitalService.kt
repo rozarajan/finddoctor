@@ -3,11 +3,14 @@ package com.perfm.finddoctorapp.service
 import com.perfm.finddoctorapp.model.HospitalDetails
 import com.perfm.finddoctorapp.repository.HospitalDetailsRepository
 import com.perfm.finddoctorapp.util.BasicCrud
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.stereotype.Service
 import java.util.*
 
-class HospitalService(val hospitalDetailsRepository: HospitalDetailsRepository):BasicCrud<String,HospitalDetails> {
+@Service
+class HospitalService(@Autowired val hospitalDetailsRepository: HospitalDetailsRepository):BasicCrud<String,HospitalDetails> {
     override fun getAll(pageable: Pageable): Page<HospitalDetails> {
         return hospitalDetailsRepository.findAll(pageable)
     }
@@ -26,5 +29,9 @@ class HospitalService(val hospitalDetailsRepository: HospitalDetailsRepository):
 
     override fun deleteById(id: String): Optional<HospitalDetails> {
         TODO("Not yet implemented")
+    }
+
+    fun deleteAllHospitalCollections(){
+        hospitalDetailsRepository.deleteAll()
     }
 }
