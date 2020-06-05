@@ -21,7 +21,7 @@ class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl,
     }
 
     private fun createDoctorDetails() {
-        //this.cleanCollections()
+        this.cleanCollections()
 
         val h1 = HospitalDetails(id = "H1000", hospitalName = "Santa Clara Homestead Med Center", city = "CA", country = "USA")
         val h2 = HospitalDetails(id = "H1001", hospitalName = "San Jose Medical Center", city = "CA", country = "USA")
@@ -60,8 +60,6 @@ class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl,
         doctorServiceImpl.deleteAllDoctorCollections()
         hospitalService.deleteAllHospitalCollections()
     }
-
-
 }
 
 fun main(args: Array<String>) {

@@ -12,13 +12,13 @@ class MessageConsumer(private val doctorServiceImpl: DoctorServiceImpl){
 
     val latch = CountDownLatch(3)
 
-    val bookLatch = CountDownLatch(1)
+    val Latch1 = CountDownLatch(1)
 
     @KafkaListener(topics = ["\${doctor.topic.name}"], containerFactory = "doctorKafkaListenerContainerFactory")
     fun doctorListener(doctor: Doctor) {
         println("Recieved message: $doctor")
-        val savedDoctorDetails : Doctor = doctorServiceImpl.insert(doctor)
+        val savedDoctorDetails : Doctor = doctorServiceImpl.update(doctor)
         println("Doctor details persisted in MongoDB: $savedDoctorDetails")
-        bookLatch.countDown()
+        Latch1.countDown()
     }
 }

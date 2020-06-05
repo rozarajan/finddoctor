@@ -6,6 +6,7 @@ import com.perfm.finddoctorapp.service.DoctorServiceImpl
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/api/doctor")
@@ -13,5 +14,6 @@ class DoctorController(private val doctorServiceImpl: DoctorServiceImpl, private
 
     @GetMapping("/all") fun getAllDoctors(pageable: Pageable) : Page<Doctor> = doctorServiceImpl.getAll(pageable)
     @PostMapping("/add") fun insertDoctorDetails(@RequestBody doctor: Doctor) : Doctor = doctorServiceImpl.insert(doctor)
+    @DeleteMapping("/delete/{id}") fun deleteDoctorById(@PathVariable id : String): Optional<Doctor> = doctorServiceImpl.deleteById(id)
 
 }

@@ -23,18 +23,18 @@ class DoctorServiceImpl(val doctorRepository: DoctorRepository, val hospitalDeta
 
 
     override fun update(obj: Doctor): Doctor {
-        TODO("Not yet implemented")
+        return if (doctorRepository.existsById(obj.id))
+            doctorRepository.save(obj.apply { this.hospitalAffiliation.hospitalDetails = hospitalDetailsRepository.findById(obj.hospitalAffiliation.hospitalDetails.id).get() })
+        else
+            insert(obj)
     }
 
     override fun deleteById(id: String): Optional<Doctor> {
-        TODO("Not yet implemented")
+        return doctorRepository.findById(id).apply { this.ifPresent{doctorRepository.delete(it)} }
     }
 
     fun deleteAllDoctorCollections(){
         doctorRepository.deleteAll()
     }
-
-
-
 
 }
