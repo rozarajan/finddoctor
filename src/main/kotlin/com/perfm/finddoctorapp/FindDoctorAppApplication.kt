@@ -16,13 +16,20 @@ import java.time.LocalDate
 @SpringBootApplication
 class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl, private val hospitalService: HospitalService,
                                 private val hospitalDetailsRepository: HospitalDetailsRepository,
-								private val doctorRepository: DoctorRepository) : ApplicationRunner {
+								private val doctorRepository: DoctorRepository) {
 
     private val log = LoggerFactory.getLogger(FindDoctorAppApplication::class.java)
 
-    override fun run(args: ApplicationArguments?) {
-        if (doctorRepository.count()<1)	this.createDoctorDetails()
-    }
+//    override fun run(args: ApplicationArguments?) {
+//        val hospitalDetailH1003: HospitalDetails = getHospitalDetailH1003()
+//        val hospitalDetailH1004: HospitalDetails = getHospitalDetailH1004()
+//        val hospitalDetails = listOf(
+//                hospitalDetailH1003, hospitalDetailH1004
+//        )
+//        hospitalDetailsRepository.insert(hospitalDetails)
+//        if (doctorRepository.count()<1)	this.createDoctorDetails()
+//    }
+
 
     private fun createDoctorDetails() {
         this.cleanCollections()
@@ -64,6 +71,9 @@ class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl,
         doctorServiceImpl.deleteAllDoctorCollections()
         hospitalService.deleteAllHospitalCollections()
     }
+    fun getHospitalDetailH1003(): HospitalDetails = HospitalDetails(id = "H1003", hospitalName = "Redwood City Medical Center", city = "CA", country = "USA")
+    fun getHospitalDetailH1004(): HospitalDetails = HospitalDetails(id = "H1004", hospitalName = "Indian Hill Medical Offices", city = "CA", country = "USA")
+    fun getHospitalDetailH1005(): HospitalDetails = HospitalDetails(id = "H1005", hospitalName = "Bv Camarillo Medical Offices", city = "CA", country = "USA")
 }
 
 fun main(args: Array<String>) {

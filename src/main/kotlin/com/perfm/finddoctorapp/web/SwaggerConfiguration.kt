@@ -23,7 +23,7 @@ class SwaggerConfiguration {
     open fun api(): Docket = Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(RequestHandlerSelectors.basePackage("com.perfm.finddoctorapp"))
-            .paths(regex("/api/doctor.*"))
+            .paths(regex("/api.*"))
             .build()
             .apiInfo(metaInfoMethod())
 
