@@ -23,12 +23,19 @@ class HospitalService(@Autowired val hospitalDetailsRepository: HospitalDetailsR
        return hospitalDetailsRepository.insert(obj)
     }
 
+    @Throws(Exception::class)
     override fun update(obj: HospitalDetails): HospitalDetails {
-        TODO("Not yet implemented")
+        if (hospitalDetailsRepository.existsById(obj.id)) {
+            return hospitalDetailsRepository.save(obj)
+        } else {
+            throw object : Exception("Hospital not found") {}
+        }
     }
 
     override fun deleteById(id: String): Optional<HospitalDetails> {
-        TODO("Not yet implemented")
+        return hospitalDetailsRepository.findById(id).apply {
+            this.ifPresent { hospitalDetailsRepository.delete(it) }
+        }
     }
 
     fun deleteAllHospitalCollections(){

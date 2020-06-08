@@ -6,6 +6,7 @@ import com.perfm.finddoctorapp.repository.HospitalDetailsRepository
 import com.perfm.finddoctorapp.service.DoctorServiceImpl
 import com.perfm.finddoctorapp.service.HospitalService
 import com.perfm.finddoctorapp.util.Objects
+import org.slf4j.LoggerFactory
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -16,6 +17,9 @@ import java.time.LocalDate
 class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl, private val hospitalService: HospitalService,
                                 private val hospitalDetailsRepository: HospitalDetailsRepository,
 								private val doctorRepository: DoctorRepository) : ApplicationRunner {
+
+    private val log = LoggerFactory.getLogger(FindDoctorAppApplication::class.java)
+
     override fun run(args: ApplicationArguments?) {
         if (doctorRepository.count()<1)	this.createDoctorDetails()
     }
