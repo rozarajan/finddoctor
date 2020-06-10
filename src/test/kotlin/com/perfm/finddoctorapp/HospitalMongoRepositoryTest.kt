@@ -64,8 +64,8 @@ class HospitalMongoRepositoryTest{
     @AfterAll
     @Throws(Exception::class)
     public fun tearDown() {
-//        this.hospitalDetailsRepository.deleteById("H1003")
-//        this.hospitalDetailsRepository.deleteById("H1004")
+        this.hospitalDetailsRepository.deleteById("H1003")
+        this.hospitalDetailsRepository.deleteById("H1004")
     }
 
 

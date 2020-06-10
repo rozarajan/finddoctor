@@ -16,19 +16,19 @@ import java.time.LocalDate
 @SpringBootApplication
 class FindDoctorAppApplication(private val doctorServiceImpl: DoctorServiceImpl, private val hospitalService: HospitalService,
                                 private val hospitalDetailsRepository: HospitalDetailsRepository,
-								private val doctorRepository: DoctorRepository) {
+								private val doctorRepository: DoctorRepository) : ApplicationRunner{
 
     private val log = LoggerFactory.getLogger(FindDoctorAppApplication::class.java)
 
-//    override fun run(args: ApplicationArguments?) {
-//        val hospitalDetailH1003: HospitalDetails = getHospitalDetailH1003()
-//        val hospitalDetailH1004: HospitalDetails = getHospitalDetailH1004()
+    override fun run(args: ApplicationArguments?) {
+        val hospitalDetailH1003: HospitalDetails = getHospitalDetailH1003()
+        val hospitalDetailH1004: HospitalDetails = getHospitalDetailH1004()
 //        val hospitalDetails = listOf(
 //                hospitalDetailH1003, hospitalDetailH1004
 //        )
 //        hospitalDetailsRepository.insert(hospitalDetails)
-//        if (doctorRepository.count()<1)	this.createDoctorDetails()
-//    }
+        if (doctorRepository.count()<1)	this.createDoctorDetails()
+    }
 
 
     private fun createDoctorDetails() {
