@@ -12,11 +12,6 @@ import java.util.*
 @RequestMapping("/api/hospital")
 class HospitalController(private val messageProducer: MessageProducer, private val hospitalService: HospitalService) {
 
-    //
-    //@GetMapping("/all") fun getAllDoctors(pageable: Pageable) : Page<Doctor> = doctorServiceImpl.getAll(pageable)
-    //@PostMapping("/add") fun insertDoctorDetails(@RequestBody doctor: Doctor) : Doctor = doctorServiceImpl.insert(doctor)
-    //@DeleteMapping("/delete/{id}") fun deleteDoctorById(@PathVariable id : String): Optional<Doctor> = doctorServiceImpl.deleteById(id)
-
     @GetMapping("/{id}") fun getHospitalDetailById(@PathVariable id: String) : Optional<HospitalDetails> = hospitalService.getById(id)
     @GetMapping("/all") fun getAllHospitalDetails(pageable: Pageable): Page<HospitalDetails> = hospitalService.getAll(pageable)
     @PostMapping("/add") fun saveHospitalDetails(@RequestBody hospitalDetails: HospitalDetails) : HospitalDetails = hospitalService.insert(hospitalDetails)
