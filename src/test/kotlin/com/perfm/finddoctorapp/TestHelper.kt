@@ -52,6 +52,7 @@ class TestHelper {
         return doctor
     }
 
+    fun getHospitalDetailH1002(): HospitalDetails = HospitalDetails(id = "H1002", hospitalName = "Fremont Medical Center", city = "CA", country = "USA")
     fun getHospitalDetailH1003(): HospitalDetails = HospitalDetails(id = "H1003", hospitalName = "Redwood City Medical Center", city = "CA", country = "USA")
     fun getHospitalDetailH1004(): HospitalDetails = HospitalDetails(id = "H1004", hospitalName = "Indian Hill Medical Offices", city = "CA", country = "USA")
     fun getHospitalDetailH1005(): HospitalDetails = HospitalDetails(id = "H1005", hospitalName = "Bv Camarillo Medical Offices", city = "CA", country = "USA")

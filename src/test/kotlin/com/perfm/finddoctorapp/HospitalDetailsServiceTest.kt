@@ -1,10 +1,9 @@
 package com.perfm.finddoctorapp
 
 
-import com.perfm.finddoctorapp.model.HospitalDetails
 import com.perfm.finddoctorapp.repository.HospitalDetailsRepository
 import com.perfm.finddoctorapp.service.HospitalService
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

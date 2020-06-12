@@ -1,5 +1,6 @@
-package com.perfm.finddoctorapp
+package com.perfm.finddoctorapp.itest
 
+import com.perfm.finddoctorapp.TestHelper
 import com.perfm.finddoctorapp.model.HospitalDetails
 import com.perfm.finddoctorapp.repository.HospitalDetailsRepository
 import com.perfm.finddoctorapp.service.HospitalService
