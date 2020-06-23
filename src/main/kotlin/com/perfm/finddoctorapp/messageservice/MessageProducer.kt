@@ -2,6 +2,7 @@ package com.perfm.finddoctorapp.messageservice
 
 
 import com.perfm.finddoctorapp.model.Doctor
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.core.KafkaTemplate
@@ -11,6 +12,9 @@ import org.springframework.util.concurrent.ListenableFutureCallback
 
 @Service
 class MessageProducer {
+
+
+    private val log = LoggerFactory.getLogger(MessageProducer::class.java)
 
     @Autowired
     private var doctorKafkaTemplate: KafkaTemplate<String, Doctor>? = null
@@ -33,7 +37,7 @@ class MessageProducer {
     }
 
     fun sendDoctorDetails(doctor: Doctor) : String {
-        println("Inside sendDoctorDetails : Doctor details $doctor")
+        log.debug("Inside sendDoctorDetails : Doctor details $doctor")
         doctorKafkaTemplate!!.send(doctorTopicName!!, doctor)
         return "success"
     }
